@@ -5,7 +5,9 @@ const loadQuote = async () => {
     const URL = "https://api.adviceslip.com/advice";
     const res = await fetch(URL);
     const data = await res.json();
-    showData(data.slip.advice, data.slip.id);
+    setTimeout(() => {
+        showData(data.slip.advice, data.slip.id);
+    }, 300);
 };
 
 const showData = (advice, id) => {
@@ -30,11 +32,9 @@ const showData = (advice, id) => {
                         </div>
                     </div>
     `;
-    // stop loader
     toggleLoader(false);
     document.getElementById("dice").addEventListener("click", function () {
         loadQuote();
-        // start loader
     });
 };
 
